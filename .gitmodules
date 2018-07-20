@@ -1,3 +1,9 @@
 [submodule "common"]
 	path = common
 	url = https://github.com/microsoftBoy/common.git
+[submodule "modulea"]
+	path = modulea
+	url = https://github.com/microsoftBoy/modulea.git
+[submodule "moduleb"]
+	path = moduleb
+	url = https://github.com/microsoftBoy/moduleb.git

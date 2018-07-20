@@ -21,3 +21,39 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+def subprojectsName = new ArrayList<String>();
+subprojects.each {
+    subprojectsName.add(it.name)
+}
+subprojects{
+    println "project name : "+name
+    if (name.equalsIgnoreCase("app")){
+        apply plugin: 'com.android.application'
+        dependencies{
+            compile project(':common')
+            if (subprojectsName.contains("modulea")){
+                compile project(':modulea')
+            }
+            if (subprojectsName.contains("moduleb")){
+                compile project(':moduleb')
+            }
+        }
+    }
+    else if (name.equalsIgnoreCase("common")){
+        apply plugin: 'com.android.library'
+    }
+    else if (name.equalsIgnoreCase("modulea")){
+        apply plugin: 'com.android.library'
+        dependencies{
+            compile project(':common')
+        }
+    }
+    else if (name.equalsIgnoreCase("moduleb")){
+        apply plugin: 'com.android.library'
+        dependencies{
+            compile project(':common')
+        }
+    }
+
+
+}
